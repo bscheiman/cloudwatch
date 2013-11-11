@@ -26,7 +26,7 @@ function compareDb($db, $serviceName, $regionName, $cloudName, $status, $allStat
             curl_setopt($ch, CURLOPT_POSTFIELDS, array(
                 "token" => PUSHOVERTOKEN,
                 "user" => PUSHOVERUSER_AMAZON,
-                "title" => "CloudWatch / Amazon",
+                "title" => $title,
                 "message" => "$serviceName ($regionName) just went $allStatus[$status]"
             ));
 
