@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Name>CloudWatch</Name>
+    <ProjectGuid>9ca23d94-9a87-46c0-8dbb-fba187c3014d</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CloudWatch</RootNamespace>
+    <!-- important to be opened by PHP Tools, when also Phalanger Tools are installed -->
+    <ProjectTypeGuids>{A0786B88-2ADB-4C21-ABE8-AA2D79766269}</ProjectTypeGuids>
+    <AssemblyName>CloudWatch</AssemblyName>
+    <IISProjectUrl>http://localhost:19095/</IISProjectUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <IncludeDebugInformation>true</IncludeDebugInformation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <IncludeDebugInformation>false</IncludeDebugInformation>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Amazon.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Azure.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="config.php">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="index.php" />
+    <Compile Include="simple_html_dom.php">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
