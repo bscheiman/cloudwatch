@@ -28,6 +28,9 @@ function azureMonitor($db) {
             $regionName = $rVal->{'Name'};
             $status = array_search($rVal->{'Status'}, $allStatus);
 
+            if ($status == "Blue")
+              continue;
+
             $stmt = $db->prepare("SELECT COUNT(*) AS count FROM status WHERE ServiceName = ? AND Region = ? AND CloudProvider = ?");
             $stmt->execute(array($serviceName, $regionName, "Azure"));
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
