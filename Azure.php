@@ -28,7 +28,7 @@ function azureMonitor($db) {
             $regionName = $rVal->{'Name'};
             $status = array_search($rVal->{'Status'}, $allStatus);
 
-            if ($status == "Blue")
+            if ($rVal->{'Status'} == "Blue")
               continue;
 
             $stmt = $db->prepare("SELECT COUNT(*) AS count FROM status WHERE ServiceName = ? AND Region = ? AND CloudProvider = ?");
