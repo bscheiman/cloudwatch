@@ -10,17 +10,17 @@ function azureMonitor($db) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, "http://www.windowsazurestatus.com/api/serviceincidents/All");
+    curl_setopt($ch, CURLOPT_URL, "http://www.windowsazurestatus.com/odata/ServiceCurrentIncidents?api-version=1.0");
 
-    $result = json_decode(curl_exec($ch));
-    $services = $result->{"Services"};
-    $lastUpdated = $result->{"LastUpdatedDate"};
+    $result = json_decode(curl_exec($ch))->{"odata.metadata"};
+    $services = $result->{"value"};
+    //$lastUpdated = $result->{"LastUpdatedDate"};
     curl_close($ch);
 
     $allStatus = array("Green", "Yellow", "Red", "Blue");
 
     foreach ($services as $key => $val) {
-        $serviceName = $val->{'ServiceName'};
+        $serviceName = $val->{'Name'};
 
         echo "\n\n$serviceName\n";
 
