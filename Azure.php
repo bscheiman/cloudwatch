@@ -12,7 +12,7 @@ function azureMonitor($db) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_URL, "http://www.windowsazurestatus.com/odata/ServiceCurrentIncidents?api-version=1.0");
 
-    $result = json_decode(curl_exec($ch))->{"odata.metadata"};
+    $result = json_decode(curl_exec($ch));
     $services = $result->{"value"};
     //$lastUpdated = $result->{"LastUpdatedDate"};
     curl_close($ch);
